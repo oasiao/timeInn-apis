@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- Styles -->
+    <!--<link rel="stylesheet" media="screen and (min-width: 360px)" type="text/css" href="css/styles.css"/>-->
+    <link rel="stylesheet" media="screen and (min-width: 360px)" type="text/css" href="css/styles-p3.css"/>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Concert+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet">
+
+    <!--FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/a87bd14a53.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="contenedor-logIn">
+    <div class="logo-logIn">
+        <a href="index.html"><img src="img/logoPalmimax.png" alt="Logo"></a>
+    </div>
+    <h1>iniciar sesión</h1>
+    <div class="form-logIn">
+        <form class="form">
+            <div class="error error-email"></div>
+                <div class="field-div">
+                    <label for="email">Email</label><input id="email" class="email" type="text" placeholder="E-mail*"/>
+                </div>
+            <div class="error error-password"></div>
+            <div class="field-div">
+                <label for="passLog">Password</label><input id="passLog" class="passwordLogIn" type="password" placeholder="Password*"/>
+                <button class="eye eye-open"><i class="fas fa-eye"></i></button>
+                <button class="eye eye-closed"><i class="fas fa-eye-slash"></i></button>
+            </div>
+            <div class="submit-div">
+                <a href="">He olvidado la contraseña</a>
+                <input class="login" type="button" value="iniciar sesión"/>
+            </div>
+
+        </form>
+    </div>
+    <div class="hr-line">
+        <hr>¿eres nuevo cliente?<hr>
+    </div>
+    <div class="new-account">
+        <button class="create-account" onclick="window.location.href='signUp.html'"> crear nueva cuenta </button>
+    </div>
+
+</div>
+</body>
+<script type="module" src="js/validaciones.js"></script>
+</html>

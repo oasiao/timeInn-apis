@@ -1,0 +1,319 @@
+:root {
+    --blanco: #ffffff;
+    --negro: #000000;
+    --gris-10: #777;
+    --gris-20: #eee;
+    --gris-30: #666;
+    --gris-40: #ddd;
+    --rojo-10: #ff0000;
+    --pink-10: #ffb6c1;
+    --verde-20: #008000;
+    --verde-10: #98fb98;
+    --yellow-10: #F2ECC6;
+    --font-menu: 'Carrois Gothic SC', cursive;
+    --font-frontPage-1: 'Carrois Gothic SC', sans-serif;
+    --input-form: 'M PLUS 1 Code', sans-serif;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+}
+/**
+LOG IN
+ */
+
+.contenedor-logIn{
+    display: flex;
+    flex-direction: column;
+}
+
+/*LOGO*/
+
+.logo-logIn {
+    display: flex;
+    text-align: center;
+    background-color: var(--negro);
+}
+
+.logo-logIn > a > img{
+    width: 50%;
+}
+
+h1{
+    font-family: var(--font-frontPage-1);
+    display: flex;
+    align-self: center;
+}
+
+/*FORM*/
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    padding: 3vh;
+}
+
+/* field-div */
+.field-div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1vh;
+}
+
+.field-div > label {
+    align-self: center;
+    font-family: var(--font-frontPage-1);
+}
+
+.field-div > input[type="text"]{
+    padding: 2vh;
+    font-family: var(--input-form);
+}
+
+.field-div > input[type="password"] {
+    padding: 2vh;
+    font-family: var(--input-form);
+}
+
+
+/* Submit-div */
+.submit-div{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 2vh;
+}
+
+.submit-div > a{
+    font-family: var(--font-frontPage-1);
+}
+
+
+/*HR LINE*/
+.hr-line {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    margin-left: 0;
+    margin-top: 5vh;
+    font-size: 3vh;
+    font-family: var(--font-frontPage-1);
+}
+
+hr {
+    width: 20%;
+}
+
+
+/* - "CREAR NUEVA CUENTA" + "FORM BUTTON" - */
+.new-account{
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+}
+
+.new-account > button, .submit-div > input[type="button"]{
+    padding: 2vh;
+    font-size: 3vh;
+    font-family: var(--font-frontPage-1);
+}
+
+
+/**
+ SIGN UP
+ */
+
+.form-signUp {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 2vh;
+    padding: 1vh;
+}
+
+/**
+ERRORES
+*/
+
+.error{
+    display: none;
+    position: relative;
+    font-size: 2vh;
+    border-radius: 10vh;
+    text-align-last: center;
+    width: 44vh;
+    background: lightpink;
+    padding: 1vh;
+    justify-content: center;
+}
+/**
+    MENSAJE.HTML
+     */
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50%;
+    font-size: 1vh;
+    text-align: center;
+    border: 2px black solid;
+    border-radius: 5px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.mensaje {
+    padding: 5%;
+    font-family: var(--input-form);
+}
+
+.container > img {
+    width: 50vm;
+    height: 15vh;
+}
+
+/**
+EYES
+ */
+.eye{
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    right: 10%;
+    padding-top: 6vh;
+}
+
+.eye-closed, .eye-closedSignUp1, .eye-closedSignUp2 {
+    display: none;
+}
+
+@media only screen and (min-width: 500px) {
+    /*FORM/REGISTER*/
+    .logo-logIn{
+        justify-content: center;
+    }
+    .logo-logIn > a{
+        display: flex;
+        justify-content: center;
+    }
+
+    .field-div{
+        justify-content: center;
+        gap: 1vh;
+    }
+
+    .login, .create-account, .signUp {
+        border: 1px var(--negro) solid;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+    /*EYE*/
+    .eye{
+        position: unset;
+        border: none;
+        background-color: transparent;
+        right: unset;
+        padding-top: unset;
+    }
+
+    /* field-div */
+    .field-div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1vh;
+    }
+
+    .field-div > label {
+        align-self: center;
+        font-family: var(--font-frontPage-1);
+    }
+
+    .field-div > input[type="text"]{
+        padding: 2vh;
+        font-family: var(--input-form);
+    }
+
+    .field-div > input[type="password"] {
+        padding: 2vh;
+        font-family: var(--input-form);
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+        font-size: 1.5vh;
+        margin-top: 20%;
+    }
+    .container > img {
+        width: 60vm;
+        height: 20vh;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    body {
+        display: grid;
+        grid-template-columns: 100%;
+        justify-items: center;
+        align-items: center;
+        margin-top: 1%;
+    }
+
+    .contenedor-logIn {
+        width: 40%;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+        padding-bottom: 1%;
+    }
+
+    .logo-logIn {
+        justify-content: center;
+        background: var(--blanco);
+    }
+
+    .logo-logIn > a {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo-logIn > a > img {
+        height: 150px;
+        width: 400px;
+    }
+
+    .field-div {
+        justify-content: center;
+        gap: 1vh;
+    }
+
+
+    .login, .create-account, .signUp {
+        border: 1px var(--negro) solid;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+    .login:hover, .create-account:hover, .signUp:hover {
+        background: var(--gris-30);
+        border: 1px var(--blanco) solid;
+        color: var(--blanco);
+    }
+
+    /**
+    MENSAJE.HTML
+     */
+    .container {
+        font-size: 2vh;
+        margin-top: 10%;
+    }
+
+    .container > img {
+        width: 90vm;
+        height: 30vh;
+    }
+}

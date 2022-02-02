@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEINN</title>
+
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" media="screen and (min-width: 360px)" href="css/styles.css">
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Concert+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet">
+
+    <!-- LAYOUT HEADER N' FOOTER -->
+    <script src="js/modules/layout.js"></script>
+
+    <!--FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/a87bd14a53.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body onload="layout.render(); suscripcion.cargaForm()">
+
+<div class="contenedorPadre">
+
+    <div class="header"></div>
+
+    <div class="video">
+        <iframe width="100%" height="400"
+                src="https://www.youtube.com/embed/mObK5XD8udk?&autoplay=1&mute=1&start=7&controls=0&loop=1&playlist=mObK5XD8udk"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+
+
+    <div id="novedades" class="novedades">
+        <h1>NOVEDADES</h1>
+        <div class="cartas-novedades"></div>
+    </div>
+
+
+    <div id="promociones" class="promociones">
+        <h1>PROMOCIONES</h1>
+        <div class="cartas-promociones"></div>
+    </div>
+
+
+    <div class="calendario">
+        <h1>CALENDARIO</h1>
+    </div>
+    <div class="footer"></div>
+    <div class="suscripcion"></div>
+
+</div>
+
+<button class="scroll" title="on top"><i class="fas fa-arrow-up"></i></button>
+
+<script type="module" src="js/script.js"></script>
+<script src="js/scrollOnTop.js"></script>
+<script src="js/cargarSuscripcion.js"></script>
+</body>
+</html>

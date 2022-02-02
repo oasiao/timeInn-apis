@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="css/styles-p3.css"/>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Concert+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet">
+
+    <!--FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/a87bd14a53.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="contenedor-logIn">
+    <div class="logo-logIn">
+        <a href="index.html"><img src="img/logoPalmimax.png" alt="Logo"></a>
+    </div>
+    <h1>registrar</h1>
+    <div class="form-signUp">
+        <form class="form-signUp" id="form-signUp">
+            <div class="error error-name"></div>
+            <div class="field-div">
+                <label for="name">Name</label>
+                <input id="name" class="name" type="text" placeholder="Nombre*"/>
+            </div>
+            <div class="error error-email-signUp"></div>
+            <div class="field-div">
+                <label for="mail">Email</label>
+                <input id="mail" class="email" type="text" placeholder="E-mail*"/>
+            </div>
+            <div class="error error-password-signUp"></div>
+            <div class="field-div">
+                    <label for="password">Password</label>
+                    <input id="password" class="password" type="password" placeholder="Password*"/>
+                    <button class="eye eye-openSignUp1"><i class="fas fa-eye"></i></button>
+                    <button class="eye eye-closedSignUp1"><i class="fas fa-eye-slash"></i></button>
+            </div>
+
+            <div class="error error-password2"></div>
+            <div class="field-div">
+                <label for="password2">Re-type password</label>
+                <input id="password2" class="password2" type="password" placeholder="Re-type password"/>
+                <button class="eye eye-openSignUp2"><i class="fas fa-eye"></i></button>
+                <button class="eye eye-closedSignUp2"><i class="fas fa-eye-slash"></i></button>
+            </div>
+
+            <div class="submit-div">
+                <input id="register" class="signUp" type="button" value="registrar"/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script type="module" src="js/validaciones.js"></script>
+</html>
