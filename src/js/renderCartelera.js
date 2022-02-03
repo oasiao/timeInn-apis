@@ -22,7 +22,7 @@ const renderCartelera = {
     renderCartelera: function () {
 
         const movies = async () => {
-            const url = "http://localhost:3001/movies";
+            const url = "http://localhost:3003/movies";
             let response = await fetch(url);
             return await response.json();
         }
@@ -75,7 +75,7 @@ const renderCartelera = {
      */
     borrarCarta: function (carta) {
         const deleteMovie = async () => {
-            const url = `http://localhost:3001/movies/${carta.getAttribute('id')}`;
+            const url = `http://localhost:3003/movies/${carta.getAttribute('id')}`;
             const settings = {
                 method: 'DELETE'
             };
@@ -94,7 +94,7 @@ const renderCartelera = {
     mostrarFormEdicion: function (pelicula) {
 
         const movies = async () => {
-            const url = "http://localhost:3001/movies";
+            const url = "http://localhost:3003/movies";
             let response = await fetch(url);
             return await response.json();
         }
@@ -161,7 +161,7 @@ const renderCartelera = {
                 formObject['Poster'] = `img/subir/${formObject.Poster.name}`
 
                 const editMovie = async (formObject) => {
-                    const url = `http://localhost:3001/movies/${pelicula}`;
+                    const url = `http://localhost:3003/movies/${pelicula}`;
                     const requestOptions = {
                         method: 'PUT',
                         body: JSON.stringify(formObject),
@@ -275,7 +275,7 @@ const renderCartelera = {
                 formObject['Poster'] = `img/subir/${formObject.Poster.name}`
 
                 const addMovie = async (formObject) => {
-                    const url = "http://localhost:3001/movies";
+                    const url = "http://localhost:3003/movies";
                     const settings = {
                         method: 'POST',
                         body: JSON.stringify(formObject),

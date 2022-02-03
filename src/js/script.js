@@ -20,7 +20,7 @@ const app = {
     renderNovedades: function () {
 
         const novedades = async () => {
-            const url = "http://localhost:3001/novedades";
+            const url = "http://localhost:3003/novedades";
             let response = await fetch(url);
             return await response.json();
         }
@@ -48,7 +48,7 @@ const app = {
      */
     renderPromociones: function () {
         const promociones = async () => {
-            const url = "http://localhost:3001/promociones";
+            const url = "http://localhost:3003/promociones";
             let response = await fetch(url);
             return await response.json();
         }

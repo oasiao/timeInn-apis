@@ -1,4 +1,8 @@
-import {usuarios} from "./usuarios.mjs";
+const users = async () => {
+    const url = "http://localhost:3003/users";
+    let response = await fetch(url);
+    return await response.json();
+}
 
 export const login = {
     emailPattern: /^[A-Za-z]{1}[a-z]+@[a-z]{5,10}\.(com|net|gov)+$/,
@@ -7,16 +11,19 @@ export const login = {
 
     validarTodo: function (email, password) {
 
+
         let validated = false;
         let user = "";
 
         if(this.validarEmail(email) && this.validarPassword(password)){
-            usuarios.forEach(usuario => {
-                if(usuario.email === email && usuario.password === password){
-                    user = usuario.name;
-                    validated = true;
-                }
-            })
+            users().then(users => {
+                users.forEach(usuario => {
+                    if(usuario.email === email && usuario.password === password){
+                        user = usuario.name;
+                        validated = true;
+                    }
+                })
+            });
         }
         return [user,validated];
     },
@@ -39,11 +46,14 @@ export const login = {
 
     emailExiste: function(email){
         let existe = false;
-        usuarios.forEach(usuario => {
-            if (usuario.email === email){
-                existe = true;
-            }
-        });
+        users().then(users => {
+            users.forEach(usuario => {
+                console.log(usuario);
+                if (usuario.email === email){
+                    existe = true;
+                }
+            });
+        })
         return existe;
     },
     register: function (name,email,password,password2){
