@@ -2,8 +2,8 @@
  * @author oasiao@cifpfbmoll.eu, smartinez@cifpfbmoll.eu
  * @version 1.0.0
  */
-import {promociones} from "./modules/promociones.js";
-import {novedades} from "./modules/novedades.js";
+//import {promociones} from "./modules/promociones.js";
+//import {novedades} from "./modules/novedades.js";
 import {calendario} from "./modules/calendario.js";
 
 
@@ -19,33 +19,47 @@ const app = {
      */
     renderNovedades: function () {
 
-        const ordenado = novedades.sort(function (a, b) {
-            if (b.Year > a.Year) {
-                return 1;
-            }
-            if (b.Year < a.Year) {
-                return -1;
-            }
-            return 0;
-        });
+        const novedades = async () => {
+            const url = "http://localhost:3001/novedades";
+            let response = await fetch(url);
+            return await response.json();
+        }
 
-        ordenado.forEach(novedad => {
-            this.novedades.innerHTML += `<div class="novedad">
+        novedades().then(novedades => {
+            novedades.sort(function (a, b) {
+                if (b.Year > a.Year) {
+                    return 1;
+                }
+                if (b.Year < a.Year) {
+                    return -1;
+                }
+                return 0;
+            }).forEach(novedad => {
+                this.novedades.innerHTML += `<div class="novedad">
                                             <img src="${novedad.Poster}" alt="${novedad.Title}">
                                             <h2>${novedad.Title}</h2>
                                             <p>${novedad.Year}</p>
-                                        </div>`;
+                                        </div>`});
         });
+
     },
     /**
      * renderiza las promociones
      */
     renderPromociones: function () {
-        promociones.forEach(promocion => {
-            this.promociones.innerHTML += `<div class="promocion">
+        const promociones = async () => {
+            const url = "http://localhost:3001/promociones";
+            let response = await fetch(url);
+            return await response.json();
+        }
+
+        promociones().then(promociones => {
+            promociones.forEach(promocion => {
+                this.promociones.innerHTML += `<div class="promocion">
                                             <img src="${promocion.Poster}" alt="${promocion.Titulo}">
                                             <h2>${promocion.Titulo}</h2>
                                         </div>`;
+            })
         })
     },
     /**
