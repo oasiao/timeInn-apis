@@ -7,6 +7,7 @@
 import {calendario} from "./modules/calendario.js";
 
 
+
 const app = {
     /**
      * obtiene los valores del DOM para operar con ellos
@@ -68,8 +69,44 @@ const app = {
     renderCalendario: function () {
         this.calendario.innerHTML += calendario.calendario();
     },
+    getCookie:function (){
+        let name = "token=";
+        let ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    },
+    checkCookie: function (){
+        let token = this.getCookie();
+        if (token !== "") {
+            this.renderNovedades();
+            this.renderPromociones();
+        }
+        else{
+            document.getElementById('novedades').innerHTML = '';
+            document.getElementById('promociones').innerHTML =
+                `
+                <div class="w3-panel w3-pale-yellow w3-border"> 
+                <p><a href="signUp.html">REGÍSTRATE</a> O 
+                <a href="logIn.html">LOGGEATE</a> PARA VER LOS EVENTOS Y PROMOCIONES
+                </p></div>
+            `;
+
+        }
+    }
 
 }
+
+app.checkCookie();
+
+/*
 app.renderNovedades();
-app.renderPromociones();
+app.renderPromociones();*/
 app.renderCalendario();

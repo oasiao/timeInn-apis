@@ -316,6 +316,12 @@ const renderCartelera = {
      * filtra películas por género, año o título
      */
     filter: function () {
+        const movies = async () => {
+            const url = "http://localhost:3003/movies";
+            let response = await fetch(url);
+            return await response.json();
+        }
+
         document.getElementById("filterButton").addEventListener('click', function () {
             let contador = 0;
             let filter = document.getElementById('filterInput').value;
@@ -323,34 +329,38 @@ const renderCartelera = {
             let select = document.getElementById('filter');
             let option = select.options[select.selectedIndex].value;
             this.cartelera.innerHTML = `<h1>CARTELERA</h1>`;
-            cartelera.forEach(pelicula => {
-                if (option === 'Year') {
-                    if (pelicula.Year === filter) {
-                        this.cartelera.innerHTML += this.renderPeliculas(pelicula, contador);
+            movies().then(peliculas =>
+                peliculas.forEach(pelicula => {
+                if (option === 'ID') {
+                    if (pelicula.id == filter) {
+                        this.cartelera.innerHTML = this.renderPeliculas(pelicula);
                         contador++;
+                        console.log(contador);
                     }
                 } else if (option === 'Title') {
                     let titulo = pelicula.Title.toLowerCase();
                     if (titulo.includes(filter)) {
-                        this.cartelera.innerHTML += this.renderPeliculas(pelicula, contador);
+                        this.cartelera.innerHTML += this.renderPeliculas(pelicula);
                         contador++;
                     }
                 } else if (option === 'Genre') {
                     let genero = pelicula.Genre.toLowerCase();
                     if (genero.includes(filter)) {
-                        this.cartelera.innerHTML += this.renderPeliculas(pelicula, contador);
+                        this.cartelera.innerHTML += this.renderPeliculas(pelicula);
                         contador++;
                     }
                 } else {
                     console.log("ERROR");
                 }
+            })).then(()=>{
+                if (contador === 0) {
+                    document.querySelector('.cartelera').innerHTML = `No hay resultados para tu búsqueda.`;
+                }
             });
 
             document.getElementById('cleanFilter').style.display = "block";
 
-            if (contador === 0) {
-                document.querySelector('.cartelera').innerHTML += `No hay resultados para tu búsqueda.`;
-            }
+
 
 
             this.cleanFilter();

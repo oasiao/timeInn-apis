@@ -153,18 +153,18 @@ const layout = {
 
         });
 
-        if (location.pathname === '/timeInn_p2/src/index.html'){
+        if (location.pathname === '/timeInn_p2-master/timeInn-apis/src/index.html'){
             if (this.getUsername() !== null || this.getUsername() !== ""){
                 this.cerrarSesion();
             }
         }
-
 
     },
 
     cerrarSesion : function (){
         document.querySelector('.logOut').addEventListener('click', function(){
             document.cookie = `username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; email=${this.getUsername('email')}`;
+            document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
             location.href="index.html";
         }.bind(this));
     }
