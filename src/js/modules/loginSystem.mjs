@@ -15,61 +15,55 @@ export const login = {
         let validated = false;
         let user = "";
 
-        if(this.validarEmail(email) && this.validarPassword(password)){
+        if (this.validarEmail(email) && this.validarPassword(password)) {
             users().then(users => {
                 users.forEach(usuario => {
-                    if(usuario.email === email && usuario.password === password){
+                    if (usuario.email === email && usuario.password === password) {
                         user = usuario.name;
                         validated = true;
                     }
                 })
             });
         }
-        return [user,validated];
+        return [user, validated];
     },
 
-    validarPassword: function (password){
+    validarPassword: function (password) {
         return this.passwordPattern.test(password);
     },
 
-    validarEmail: function (email){
+    validarEmail: function (email) {
         return this.emailPattern.test(email);
     },
 
     validarName: function (name) {
-      return this.namePattern.test(name);
+        return this.namePattern.test(name);
     },
 
-    passwordsIguales: function (password1,password2){
+    passwordsIguales: function (password1, password2) {
         return password1 === password2;
     },
 
-    emailExiste: function(email){
-        let existe = false;
-        users().then(users => {
-            users.forEach(usuario => {
-                console.log(usuario);
-                if (usuario.email === email){
-                    existe = true;
-                }
-            });
-        })
-        return existe;
+    emailExiste: function (email, inputEmail) {
+        if(email === inputEmail){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     },
-    register: function (name,email,password,password2){
-        const user = {email,name,password};
+    register: function (name, email, password, password2) {
+        const user = {email, name, password};
 
-        if (password === password2){
-            if (this.validarPassword(password) && this.validarEmail(email) && this.validarName(name)){
+        if (password === password2) {
+            if (this.validarPassword(password) && this.validarEmail(email) && this.validarName(name)) {
                 //usuarios.push(user);
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
-        }
-        else {
+        } else {
             return false;
         }
 

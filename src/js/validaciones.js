@@ -41,7 +41,6 @@ const validaciones = {
         this.login.addEventListener('click', function () {
 
 
-
             const loginUser = async (email, password) => {
                 const url = 'http://localhost:3001/auth/login';
                 let headers = new Headers();
@@ -58,14 +57,14 @@ const validaciones = {
                 if (response.status === 200) {
                     let data = await response.json();
                     if (![null, undefined].includes(data)) {
-                            let user = login.validarTodo(this.email.value,this.passwordLogIn.value);
-                            document.cookie = `token=${data.access_token};max-age=3600`; //la cookie durará 1h
-                            document.cookie = `username=${email};max-age=3600`; //la cookie durará 1h
-                            location.href = 'index.html';
+                        let user = login.validarTodo(this.email.value, this.passwordLogIn.value);
+                        document.cookie = `token=${data.access_token};max-age=3600`; //la cookie durará 1h
+                        document.cookie = `username=${email};max-age=3600`; //la cookie durará 1h
+                        location.href = 'index.html';
                     }
 
                 } else {
-                    alert('error');
+                    alert('Contraseña o email incorrectos');
                 }
             }
 
@@ -130,10 +129,14 @@ const validaciones = {
                     password: this.password.value
                 };
 
+                const getUsers = async (email) => {
+                    const url = "http://localhost:3003/users";
+                    let response = await fetch(url);
+                    return await response.json();
+                }
+
                 const registerUser = async (user) => {
                     const url = "http://localhost:3001/auth/register";
-                    const url2 = "http://localhost:3003/users";
-
                     const settings = {
                         method: 'POST',
                         body: JSON.stringify(user),
@@ -143,21 +146,49 @@ const validaciones = {
 
                     };
 
-                    if (login.emailExiste(this.email.value)) {
-                        let response = await fetch(url, settings).then(() => {
-                            location.href = 'mensaje.html'
-                        });
-                        let response2 = await fetch(url2, settings);
-                    } else {
-                        alert("El email existe!");
-                    }
-
+                    let response = await fetch(url, settings);
                 }
 
-                registerUser(user).catch(e => {
-                    console.error(e)
-                });
+                const addUser = async (user) => {
+                    const url = "http://localhost:3003/users";
+                    const settings = {
+                        method: 'POST',
+                        body: JSON.stringify(user),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
 
+                    };
+                    let response = await fetch(url, settings);
+                    console.log(await response.json());
+                }
+
+                getUsers().then(users => {
+                    let existe = false;
+                    users.forEach(user => {
+                        if (login.emailExiste(this.email.value, user.email)) {
+                            existe = true;
+                        }
+
+                    });
+
+                    if (!existe) {
+                        registerUser(user).catch(e => {
+                            console.error(e);
+                            console.log("registrado");
+
+                        });
+
+                        addUser(user).then(()=>{
+                            location.href = 'mensaje.html';
+                        }).catch(e => {
+                            console.error(e);
+                        });
+                    } else {
+                        console.log("email existente");
+                        alert("Email introducido ya existe!");
+                    }
+                })
 
                 /*document.cookie = `username=${this.name.value};max-age=3600`;*/
 

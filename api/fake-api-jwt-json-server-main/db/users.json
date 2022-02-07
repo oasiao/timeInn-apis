@@ -1,16 +1,1 @@
-{
-  "users": [
-    {
-      "id": 1,
-      "email": "onikakimasiao@gmail.com",
-      "name": "Kim",
-      "password": "Ruth11617"
-    },
-    {
-      "id": 2,
-      "email": "admin@admin.com",
-      "name": "Administrador",
-      "password": "AdminAd123"
-    }
-  ]
-}
+{"users":[{"id":1,"email":"onikakimasiao@gmail.com","name":"Kim","password":"Ruth11617"},{"id":2,"email":"admin@admin.com","name":"Administrador","password":"AdminAd123"},{"id":3,"email":"test@gmail.com","password":"ruth11617"},{"id":4,"email":"testtwo@gmail.com","password":"ruth11617"},{"id":5,"email":"testthree@gmail.com","password":"ruth11617"},{"id":6,"email":"testfour@gmail.com","password":"ruth11617"}]}
