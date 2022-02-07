@@ -35,3 +35,5 @@ amb un email existent, apareixerà un error/alert per a que l'usuari canvii l'em
   
 - Per veure les promocions i novetats, l'usuari haurà d'estar loggetjat. Per veure si esta loggetjat,
 mirarem si l'usuari té creat el token.
+  
+- Les imatges de la cartelera es carreguen amb encadenament de fetchs, fent servir blob.

@@ -27,17 +27,29 @@ const renderCartelera = {
             return await response.json();
         }
 
+        const printImage = async (url) => {
+            let img = document.createElement('img');
 
-        let tituloRep = "";
+            //fetch de la url de la imagen
+            let response = await fetch(url);
+
+            //blob() a la imagen
+            let resBlob = await response.blob();
+
+            //añadimos al atributo src la imagen.blob()
+            img.src = URL.createObjectURL(resBlob);
+            return img;
+        }
 
         this.cartelera.innerHTML += `<h2 class="carteleraTitulo">CARTELERA</h2>`;
 
         movies().then(peliculas => {
-            let contador = 1;
             peliculas.forEach(pelicula => {
-                this.cartelera.innerHTML += this.renderPeliculas(pelicula,contador);
-                contador++;
+                printImage(pelicula.Poster).then(img => {
+                    this.cartelera.innerHTML += this.renderPeliculas(pelicula,img.outerHTML);
+                });
             });
+
             this.listenerBotones();
         });
 
@@ -331,37 +343,34 @@ const renderCartelera = {
             this.cartelera.innerHTML = `<h1>CARTELERA</h1>`;
             movies().then(peliculas =>
                 peliculas.forEach(pelicula => {
-                if (option === 'ID') {
-                    if (pelicula.id == filter) {
-                        this.cartelera.innerHTML = this.renderPeliculas(pelicula);
-                        contador++;
-                        console.log(contador);
+                    if (option === 'ID') {
+                        if (pelicula.id == filter) {
+                            this.cartelera.innerHTML = this.renderPeliculas(pelicula);
+                            contador++;
+                            console.log(contador);
+                        }
+                    } else if (option === 'Title') {
+                        let titulo = pelicula.Title.toLowerCase();
+                        if (titulo.includes(filter)) {
+                            this.cartelera.innerHTML += this.renderPeliculas(pelicula);
+                            contador++;
+                        }
+                    } else if (option === 'Genre') {
+                        let genero = pelicula.Genre.toLowerCase();
+                        if (genero.includes(filter)) {
+                            this.cartelera.innerHTML += this.renderPeliculas(pelicula);
+                            contador++;
+                        }
+                    } else {
+                        console.log("ERROR");
                     }
-                } else if (option === 'Title') {
-                    let titulo = pelicula.Title.toLowerCase();
-                    if (titulo.includes(filter)) {
-                        this.cartelera.innerHTML += this.renderPeliculas(pelicula);
-                        contador++;
-                    }
-                } else if (option === 'Genre') {
-                    let genero = pelicula.Genre.toLowerCase();
-                    if (genero.includes(filter)) {
-                        this.cartelera.innerHTML += this.renderPeliculas(pelicula);
-                        contador++;
-                    }
-                } else {
-                    console.log("ERROR");
-                }
-            })).then(()=>{
+                })).then(() => {
                 if (contador === 0) {
                     document.querySelector('.cartelera').innerHTML = `No hay resultados para tu búsqueda.`;
                 }
             });
 
             document.getElementById('cleanFilter').style.display = "block";
-
-
-
 
             this.cleanFilter();
             this.listenerBotones();
@@ -384,9 +393,10 @@ const renderCartelera = {
 
         }.bind(this));
     },
-    renderPeliculas: function (pelicula) {
+    renderPeliculas: function (pelicula,img) {
+
         return `<div id="${pelicula.id}" class="pelicula" name="${pelicula.Title}" >
-                                            <div id="${pelicula.id}" class="img-container" name="${pelicula.Title}" ><img src="${pelicula.Poster}" alt="${pelicula.Title}"></div>
+                                            <div id="${pelicula.id}" class="img-container" name="${pelicula.Title}" >${img}</div>
                                             
                                             <div class="text-content">
                                                 <h2 class="titulo-pelicula">${pelicula.Title}</h2>
@@ -403,6 +413,7 @@ const renderCartelera = {
                                             </div>
                                             </div>
                                          </div>`;
+
 
     },
     /**
@@ -422,7 +433,8 @@ const renderCartelera = {
         });
 
         return validated;
-    },
+    }
+    ,
     /**
      * función para cerrar el filtro
      */
