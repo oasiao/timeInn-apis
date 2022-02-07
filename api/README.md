@@ -32,3 +32,6 @@ Les millores que he implementat són els següents:
 - Els emails dels usuaris no es poden repetir. Aleshores, si es registra un usuari
 amb un email existent, apareixerà un error/alert per a que l'usuari canvii l'email i torni
   intentar registrar-se.
+  
+- Per veure les promocions i novetats, l'usuari haurà d'estar loggetjat. Per veure si esta loggetjat,
+mirarem si l'usuari té creat el token.
